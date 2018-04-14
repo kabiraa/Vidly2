@@ -22,5 +22,30 @@ namespace Vidly2.Controllers
             var viewModel = new RandomMovieViewModel{ Movie = movie, Customers = customers };
             return View(viewModel);
         }
+
+        [Route("movie/Index")]
+        public ActionResult Index()
+        {
+            var movies = GetMovies();
+            var viewModel = new GetMoviesViewModel {
+                Movies = movies.ToList()
+            };
+            return View(viewModel);
+        }
+
+        public IEnumerable<Movie> GetMovies()
+        {
+            return new List<Movie>
+            {
+                new Movie { Name = "Tamasha", Id = 1},
+                new Movie { Name = "Rockstar", Id = 2}
+            };
+        }
+
+        public ActionResult MovieDetail(int id)
+        {
+            var movie = GetMovies().SingleOrDefault(m => m.Id == id);
+            return Content(movie.Name);
+        }
     }
 }
