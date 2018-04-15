@@ -24,7 +24,7 @@ namespace Vidly2.Controllers
             _context.Dispose();
         }
         // GET: Customer
-        [Route("customers/Index")]
+        [Route("Customers/Index")]
         public ActionResult Index()
         {
             var customers = _context.Customer.Include(c => c.MembershipType).ToList();
@@ -35,13 +35,13 @@ namespace Vidly2.Controllers
             return View(viewModel);
         }
 
-        public ActionResult CustomerDetail(int id)
+        public ActionResult Detail(int id)
         {
-            var customer = _context.Customer.SingleOrDefault(cust => cust.CustomerId == id);
+            var customer = _context.Customer.Include(c=>c.MembershipType).SingleOrDefault(cust => cust.CustomerId == id);
             if (customer == null)
                 return HttpNotFound();
 
-            return Content(customer.Name);
+            return View(customer);
         }
     }
 }

@@ -23,7 +23,7 @@
                     foreach (var c in Model.Customers)
                     {
                         <tr class="table-light">
-                            <td>@Html.ActionLink(c.Name, "CustomerDetail", "Customer", new { id = c.CustomerId }, null)</td>
+                            <td>@Html.ActionLink(c.Name, "Detail", "Customer", new { id = c.CustomerId }, null)</td>
                             <td>@c.MembershipType.Name</td>
                         </tr>
                     }
