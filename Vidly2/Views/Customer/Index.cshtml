@@ -14,7 +14,8 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>Customers List</th>
+                    <th>Customers</th>
+                    <th>Discount Rate</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,6 +24,7 @@
                     {
                         <tr class="table-light">
                             <td>@Html.ActionLink(c.Name, "CustomerDetail", "Customer", new { id = c.CustomerId }, null)</td>
+                            <td>@c.MembershipType.DiscountRate %</td>
                         </tr>
                     }
                 }
