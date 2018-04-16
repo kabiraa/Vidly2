@@ -8,6 +8,7 @@
     <thead>
         <tr>
             <th>Movies List</th>
+            <th>Genre</th>
         </tr>
     </thead>
     <tbody>
@@ -15,7 +16,8 @@
             foreach (var movie in Model.Movies)
             {
                 <tr class="table-light">
-                    <td>@Html.ActionLink(movie.Name, "MovieDetail", "Movie", new { id = movie.Id }, null)</td>
+                    <td>@Html.ActionLink(movie.Name, "Detail", "Movie", new { id = movie.Id }, null)</td>
+                    <td>@movie.Genre.Name</td>
                 </tr>
             }
         }
